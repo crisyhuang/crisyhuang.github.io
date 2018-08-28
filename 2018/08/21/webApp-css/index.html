@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Crisyhuang&#39;s Blog">
 <meta property="og:description" content="本文以问答的形式，阐述一些我在日常开发中经常遇到的问题，如果您有更好的解决方法，欢迎留言告诉我哦~~ 1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？1-webkit-user-select:none;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-21T08:26:33.619Z">
+<meta property="og:updated_time" content="2018-08-28T08:04:18.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webApp-css篇">
 <meta name="twitter:description" content="本文以问答的形式，阐述一些我在日常开发中经常遇到的问题，如果您有更好的解决方法，欢迎留言告诉我哦~~ 1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？1-webkit-user-select:none;">
@@ -91,16 +91,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本文以问答的形式，阐述一些我在日常开发中经常遇到的问题，如果您有更好的解决方法，欢迎留言告诉我哦~~</p>
-<h6 id="1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？"><a href="#1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？" class="headerlink" title="1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？"></a>1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-user-select:none;</span><br></pre></td></tr></table></figure>
+<h5 id="1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？"><a href="#1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？" class="headerlink" title="1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？"></a>1、点击button时，Android下会自动选中文字并弹出输入法可编辑button内容，禁止这种效果？</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-user-select:none;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h6 id="2、click-页面元素，会有半透明的背景色，原来是tap时背景高亮了，将背景色设为透明即可。"><a href="#2、click-页面元素，会有半透明的背景色，原来是tap时背景高亮了，将背景色设为透明即可。" class="headerlink" title="2、click 页面元素，会有半透明的背景色，原来是tap时背景高亮了，将背景色设为透明即可。"></a>2、click 页面元素，会有半透明的背景色，原来是tap时背景高亮了，将背景色设为透明即可。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-tap-highlight-color:rgba(255,255,255,0);</span><br></pre></td></tr></table></figure>
-<h6 id="3、重置placeholder的字体颜色"><a href="#3、重置placeholder的字体颜色" class="headerlink" title="3、重置placeholder的字体颜色?"></a>3、重置placeholder的字体颜色?</h6><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.mark-input</span> <span class="selector-tag">input</span><span class="selector-pseudo">::-webkit-input-placeholder</span>&#123; </span><br><span class="line">     <span class="attribute">color</span>: <span class="number">#add9ff</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h6 id="4、focus-input时，边框会变色？"><a href="#4、focus-input时，边框会变色？" class="headerlink" title="4、focus input时，边框会变色？"></a>4、focus input时，边框会变色？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outline:none;</span><br></pre></td></tr></table></figure>
-<h6 id="5、某小机型的uc浏览器inline-block元素用-font-size-0-方案去除4px间隙，但仍有1px间隙"><a href="#5、某小机型的uc浏览器inline-block元素用-font-size-0-方案去除4px间隙，但仍有1px间隙" class="headerlink" title="5、某小机型的uc浏览器inline-block元素用 font-size:0 方案去除4px间隙，但仍有1px间隙?"></a>5、某小机型的uc浏览器inline-block元素用 font-size:0 方案去除4px间隙，但仍有1px间隙?</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">父元素：font-size:0，letter-spacing为负值；</span><br><span class="line">子元素：font-size: 14px; letter-spacing: normal;</span><br></pre></td></tr></table></figure>
+<h5 id="2、click-页面元素，会有半透明的背景色，原来是tap时背景高亮了，将背景色设为透明即可。"><a href="#2、click-页面元素，会有半透明的背景色，原来是tap时背景高亮了，将背景色设为透明即可。" class="headerlink" title="2、click 页面元素，会有半透明的背景色，原来是tap时背景高亮了，将背景色设为透明即可。"></a>2、click 页面元素，会有半透明的背景色，原来是tap时背景高亮了，将背景色设为透明即可。</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-webkit-tap-highlight-color:rgba(255,255,255,0);</span><br></pre></td></tr></table></figure>
+<h5 id="3、重置placeholder的字体颜色"><a href="#3、重置placeholder的字体颜色" class="headerlink" title="3、重置placeholder的字体颜色?"></a>3、重置placeholder的字体颜色?</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.mark-input</span> <span class="selector-tag">input</span><span class="selector-pseudo">::-webkit-input-placeholder</span>&#123; </span><br><span class="line">     <span class="attribute">color</span>: <span class="number">#add9ff</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4、focus-input时，边框会变色？"><a href="#4、focus-input时，边框会变色？" class="headerlink" title="4、focus input时，边框会变色？"></a>4、focus input时，边框会变色？</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outline:none;</span><br></pre></td></tr></table></figure>
+<h5 id="5、某小机型的uc浏览器inline-block元素用-font-size-0-方案去除4px间隙，但仍有1px间隙"><a href="#5、某小机型的uc浏览器inline-block元素用-font-size-0-方案去除4px间隙，但仍有1px间隙" class="headerlink" title="5、某小机型的uc浏览器inline-block元素用 font-size:0 方案去除4px间隙，但仍有1px间隙?"></a>5、某小机型的uc浏览器inline-block元素用 font-size:0 方案去除4px间隙，但仍有1px间隙?</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">父元素：font-size:0，letter-spacing为负值；</span><br><span class="line">子元素：font-size: 14px; letter-spacing: normal;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjl3holv50004ddbdz8jrdi63" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjldffnzb000bjfbdt6jzalk0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,6 +163,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/08/28/a-href/">a链接覆盖 window.location.href</a>
+          </li>
         
           <li>
             <a href="/2018/08/21/urlencode/">实现各种编码的urlencode</a>
