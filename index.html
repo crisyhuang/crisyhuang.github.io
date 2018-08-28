@@ -93,14 +93,15 @@
       
         <p>今天在调试bug，发现了个陈年问题，时间久了竟也忘了，特此记录下。</p>
 <h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><p>如下，点击链接，会直接跳转到 bbs，而不是 baidu。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://bbs.tianya.cn"</span> <span class="attr">onclick</span>=<span class="string">"window.location.href='https://www.baidu.com'"</span>&gt;</span>Click 1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="经验总结："><a href="#经验总结：" class="headerlink" title="经验总结："></a>经验总结：</h5><p>JS 事件会在 href 跳转之前优先执行，但若 JS 中包含 window.location.href 语句，则是优先响应 a 链接自身的 href 属性。</p>
-<p>若想优先响应 window.location.href ，可参考如下方案：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0)"</span> <span class="attr">onclick</span>=<span class="string">"window.location.href='https://www.baidu.com'"</span>&gt;</span>Click 2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://bbs.tianya.cn"</span> <span class="attr">onclick</span>=<span class="string">"window.location.href='https://www.baidu.com';return false;"</span>&gt;</span>Click 3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/08/28/a-href/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/28/a-href/" data-id="cjldffnyr0000jfbdywcdovia" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/28/a-href/" data-id="cjldfhiwv0000jxbdqpozio85" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/urlencode/" data-id="cjldffnz00004jfbdey3z9c9g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/urlencode/" data-id="cjldfhix50004jxbde3xl69s3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjldffnzb000bjfbdt6jzalk0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjldfhix70005jxbdnzp4s07z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -237,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/multi-col-layout/" data-id="cjldffnyz0003jfbdox5c3yie" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/multi-col-layout/" data-id="cjldfhiwz0001jxbdtftn6ra3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/center-layout/" data-id="cjldffnyv0001jfbdifi73nhc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/center-layout/" data-id="cjldfhix20003jxbda25bdqd6" class="article-share-link">Share</a>
       
       
     </footer>
