@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Crisyhuang&#39;s Blog">
 <meta property="og:description" content="今天在调试bug，发现了个陈年问题，时间久了竟也忘了，特此记录下。 问题描述：如下，点击链接，会直接跳转到 bbs，而不是 baidu。1&amp;lt;a href=&quot;http://bbs.tianya.cn&quot; onclick=&quot;alert(&apos;hjj&apos;);window.location.href=&apos;https://www.baidu.com&apos;&quot;&amp;gt;Click 1&amp;lt;/a&amp;gt;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-28T08:14:00.346Z">
+<meta property="og:updated_time" content="2018-08-28T08:24:47.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="a链接覆盖 window.location.href">
 <meta name="twitter:description" content="今天在调试bug，发现了个陈年问题，时间久了竟也忘了，特此记录下。 问题描述：如下，点击链接，会直接跳转到 bbs，而不是 baidu。1&amp;lt;a href=&quot;http://bbs.tianya.cn&quot; onclick=&quot;alert(&apos;hjj&apos;);window.location.href=&apos;https://www.baidu.com&apos;&quot;&amp;gt;Click 1&amp;lt;/a&amp;gt;">
@@ -93,14 +93,18 @@
         <p>今天在调试bug，发现了个陈年问题，时间久了竟也忘了，特此记录下。</p>
 <h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><p>如下，点击链接，会直接跳转到 bbs，而不是 baidu。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://bbs.tianya.cn"</span> <span class="attr">onclick</span>=<span class="string">"alert('hjj');window.location.href='https://www.baidu.com'"</span>&gt;</span>Click 1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h5 id="经验总结："><a href="#经验总结：" class="headerlink" title="经验总结："></a>经验总结：</h5><p>虽然JS 事件会在 href 跳转之前优先执行，但若 JS 中包含 window.location.href 语句，则是优先响应 a 链接自身的 href 属性。</p>
+<h5 id="经验总结："><a href="#经验总结：" class="headerlink" title="经验总结："></a>经验总结：</h5><ul>
+<li>JS 事件会在 href 跳转之前优先执行；</li>
+<li>若 JS 中包含 window.location.href 语句，则是优先响应 a 链接自身的 href 属性；</li>
+<li>chrome调试技巧：network/Preserve log，可保留页面跳转之前的日志，方便调试此类问题。</li>
+</ul>
 <p>若想优先响应 window.location.href ，可参考如下方案：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0)"</span> <span class="attr">onclick</span>=<span class="string">"window.location.href='https://www.baidu.com'"</span>&gt;</span>Click 2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://bbs.tianya.cn"</span> <span class="attr">onclick</span>=<span class="string">"window.location.href='https://www.baidu.com';return false;"</span>&gt;</span>Click 3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/28/a-href/" data-id="cjldfqmiw0001kpbde0bj6bh6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/28/a-href/" data-id="cjldg4tmf0000rebdesfefdfc" class="article-share-link">Share</a>
       
       
     </footer>
