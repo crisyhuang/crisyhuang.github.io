@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Crisyhuang&#39;s Blog">
 <meta property="og:description" content="问题描述： 多个路由共用一个子组件 list.vue，切换路由时，子组件的绑定事件会递增1，即重复绑定； 即使正确地移除了事件监听器，切换路由还是有重复绑定的bug。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-29T10:42:02.303Z">
+<meta property="og:updated_time" content="2018-11-29T11:20:35.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue-事件监听器的绑定与移除">
 <meta name="twitter:description" content="问题描述： 多个路由共用一个子组件 list.vue，切换路由时，子组件的绑定事件会递增1，即重复绑定； 即使正确地移除了事件监听器，切换路由还是有重复绑定的bug。">
@@ -101,7 +101,15 @@
 <li>原因：keep-alive 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。故路由切换时，即使在 destroyed 中移除事件监听器也不会起作用。</li>
 </ul>
 </li>
-<li>经测试，计时器 setTimeout/setInterval 同上。</li>
+</ol>
+<h4 id="补充方案："><a href="#补充方案：" class="headerlink" title="补充方案："></a>补充方案：</h4><ol>
+<li>经测试，计时器 setTimeout/setInterval 也有类似问题；</li>
+<li>若不使用 keep-alive 包裹动态组件，频繁切换路由时会反复渲染组件，性能与体验很差！</li>
+<li>可使用钩子 activated/deactivated 来解决，对应替换如下示例代码中的 mounted/destroyed。<ul>
+<li>activated: keep-alive 组件激活时调用；</li>
+<li>deactivated: keep-alive 组件停用时调用。</li>
+</ul>
+</li>
 </ol>
 <h4 id="代码实例："><a href="#代码实例：" class="headerlink" title="代码实例："></a>代码实例：</h4><ul>
 <li>完整代码：vue-movie/src/base-components/list/list.vue<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mounted()&#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">// 上拉加载更多：绑定事件监听器</span></span><br><span class="line">    <span class="keyword">this</span>.loadMoreObj = loadMore(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        _this.$emit(<span class="string">'loadMoreList'</span>, _this.$refs.moreTips)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'touchstart'</span>, <span class="keyword">this</span>.loadMoreObj.startFn, <span class="literal">false</span>)</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'touchmove'</span>, <span class="keyword">this</span>.loadMoreObj.moveFn, <span class="literal">false</span>)</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'touchend'</span>, <span class="keyword">this</span>.loadMoreObj.endFn, <span class="literal">false</span>)</span><br><span class="line">&#125;,</span><br><span class="line">destroyed()&#123;</span><br><span class="line">    <span class="comment">// 上拉加载更多：移除事件监听器</span></span><br><span class="line">    <span class="built_in">document</span>.removeEventListener(<span class="string">'touchstart'</span>, <span class="keyword">this</span>.loadMoreObj.startFn, <span class="literal">false</span>)</span><br><span class="line">    <span class="built_in">document</span>.removeEventListener(<span class="string">'touchmove'</span>, <span class="keyword">this</span>.loadMoreObj.moveFn, <span class="literal">false</span>)</span><br><span class="line">    <span class="built_in">document</span>.removeEventListener(<span class="string">'touchend'</span>, <span class="keyword">this</span>.loadMoreObj.endFn, <span class="literal">false</span>)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
@@ -112,7 +120,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/vue-eventListener/" data-id="cjp2h00b30000babd2esv5wkf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-eventListener/" data-id="cjp2id7bz0004j6bd6dqz9zf6" class="article-share-link">Share</a>
       
       
     </footer>
