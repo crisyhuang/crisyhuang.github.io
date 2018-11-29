@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Crisyhuang&#39;s Blog">
 <meta property="og:description" content="文档描述： 参照 vm.$nextTick([callback]) 将 callback 延迟到下次 DOM 循环更新后执行。 与 Vue.nextTick 的区别：callback 里的 this 自动绑定到调用它的实例上。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-27T08:40:20.667Z">
+<meta property="og:updated_time" content="2018-11-29T10:24:15.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue-$nextTick应用">
 <meta name="twitter:description" content="文档描述： 参照 vm.$nextTick([callback]) 将 callback 延迟到下次 DOM 循环更新后执行。 与 Vue.nextTick 的区别：callback 里的 this 自动绑定到调用它的实例上。">
@@ -98,7 +98,7 @@
 <a id="more"></a>
 <h4 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h4><ul>
 <li>功能：路由切换/加载更多时，给变动的 list 添加图片懒加载方法。</li>
-<li>bug：首屏图片没有应用懒加载规则而自动加载，即 list 修改后，无法立即获取到 DOM，img集合为[]。</li>
+<li>bug：首屏图片没有应用懒加载规则而自动加载，即 list 修改后，无法立即获取到 DOM，img集合为[ ]。</li>
 <li>解决：引入 $nextTick 方法，若 list 有变动，它会等待 DOM 更新结束后，再执行回调函数获取到最新的 DOM。</li>
 </ul>
 <h4 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h4><ul>
@@ -109,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/vue-nextTick/" data-id="cjp2g5r850005v9bdaxm6refk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-nextTick/" data-id="cjp2gcexc0005wmbd4u3093te" class="article-share-link">Share</a>
       
       
     </footer>
