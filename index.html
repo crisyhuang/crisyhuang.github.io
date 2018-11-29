@@ -65,14 +65,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-a-href" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-vue-eventListener" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/28/a-href/" class="article-date">
-  <time datetime="2018-08-28T07:29:14.000Z" itemprop="datePublished">2018-08-28</time>
+    <a href="/2018/11/27/vue-eventListener/" class="article-date">
+  <time datetime="2018-11-27T03:52:45.000Z" itemprop="datePublished">2018-11-27</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/JS/">JS</a>
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>
   </div>
 
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/28/a-href/">a链接覆盖 window.location.href</a>
+      <a class="article-title" href="/2018/11/27/vue-eventListener/">Vue-事件监听器的绑定与移除</a>
     </h1>
   
 
@@ -91,17 +91,120 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天在调试bug，发现了个陈年问题，时间久了竟也忘了，特此记录下。</p>
-<h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><p>如下，点击链接，会直接跳转到 bbs，而不是 baidu。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://bbs.tianya.cn"</span> <span class="attr">onclick</span>=<span class="string">"alert('hjj');window.location.href='https://www.baidu.com'"</span>&gt;</span>Click 1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        <h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><ol>
+<li>多个路由共用一个子组件 list.vue，切换路由时，子组件的绑定事件会递增1，即重复绑定；</li>
+<li>即使正确地移除了事件监听器，切换路由还是有重复绑定的bug。</li>
+</ol>
         
           <p class="article-more-link">
-            <a href="/2018/08/28/a-href/#more">Read More</a>
+            <a href="/2018/11/27/vue-eventListener/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/28/a-href/" data-id="cjldg4tmf0000rebdesfefdfc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-eventListener/" data-id="cjp20ved60004snbdkvt7w8oo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue-proxy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/27/vue-proxy/" class="article-date">
+  <time datetime="2018-11-27T03:52:24.000Z" itemprop="datePublished">2018-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/27/vue-proxy/">Vue-利用proxy跨域</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>环境：Vue CLI3</li>
+<li>配置文件：vue.config.js</li>
+</ul>
+<h4 id="跨域外链：proxy"><a href="#跨域外链：proxy" class="headerlink" title="跨域外链：proxy"></a>跨域外链：proxy</h4><ul>
+<li>changeOrigin若设为 true, 则本地会虚拟一个服务端，接收你的请求并转发出去，所以不会有跨域问题。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    port: <span class="number">8080</span>,</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="string">'/api'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://shop.tianya.cn'</span>,</span><br><span class="line">            ws: <span class="literal">true</span>,</span><br><span class="line">            changeOrigin: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="跨域外链：express-http-proxy-middleware"><a href="#跨域外链：express-http-proxy-middleware" class="headerlink" title="跨域外链：express + http-proxy-middleware"></a>跨域外链：express + http-proxy-middleware</h4><ul>
+<li>文档参考：<a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="noopener">http-proxy-middleware</a><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> proxy = <span class="built_in">require</span>(<span class="string">'http-proxy-middleware'</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(<span class="string">'/api'</span>, proxy(&#123;<span class="attr">target</span>: <span class="string">'http://shop.tianya.cn'</span>, <span class="attr">changeOrigin</span>: <span class="literal">true</span>&#125;))</span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">devServer: &#123;</span><br><span class="line">    port: <span class="number">8080</span>,</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="string">'/api'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://localhost:3000'</span>,</span><br><span class="line">            ws: <span class="literal">true</span>,</span><br><span class="line">            changeOrigin: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  http://localhost:3000/api/-&gt; http://shop.tianya.cn/api/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="访问本地数据：express-proxy"><a href="#访问本地数据：express-proxy" class="headerlink" title="访问本地数据：express + proxy"></a>访问本地数据：express + proxy</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(<span class="string">'/mock'</span>, express.static(<span class="string">'./mock'</span>))</span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">devServer: &#123;</span><br><span class="line">    port: <span class="number">8080</span>,</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="string">'/mock'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://localhost:3000'</span>,</span><br><span class="line">            ws: <span class="literal">true</span>,</span><br><span class="line">            changeOrigin: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/27/vue-proxy/" data-id="cjp20ved70005snbdokfem7fv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue-nextTick" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/27/vue-nextTick/" class="article-date">
+  <time datetime="2018-11-27T03:51:35.000Z" itemprop="datePublished">2018-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Vue/">Vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/27/vue-nextTick/">Vue-$nextTick应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="文档描述："><a href="#文档描述：" class="headerlink" title="文档描述："></a>文档描述：</h4><ul>
+<li>参照 <a href="https://cn.vuejs.org/v2/api/#vm-nextTick" target="_blank" rel="noopener">vm.$nextTick([callback])</a></li>
+<li>将 callback 延迟到下次 DOM 循环更新后执行。</li>
+<li>与 Vue.nextTick 的区别：callback 里的 this 自动绑定到调用它的实例上。</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2018/11/27/vue-nextTick/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/27/vue-nextTick/" data-id="cjp20ved90007snbdzngky51a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,8 +240,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h5><p>获取用户输入的字符串，跳转到外链：<a href="https://www.nstl.gov.cn/facade/search/uniformSearch.do?doc_uniform=J02,J03,J04,C02,Z01,C01,D01,D02,P01,P02,P03,P04,P05,P06,P07,P08,P09,P10,P11,P12,P13,P14,P15,P16,S01,S02,G02&amp;kw_uniform=背影" target="_blank" rel="noopener">国家科技图书文献中心</a>，进一步检索。</p>
-<h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><p>你可以点击上述链接，检索条件变成了乱码。为啥？因为该外链的后端对检索字进行了 GBK 编码，所以我们传过去的字符串也应该先进行相同字符集的编码。但是 JavaScript 本身没有特性支持 gbk 的 urlencode，该怎么解决？</p>
+        <h4 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h4><p>获取用户输入的字符串，跳转到外链：<a href="https://www.nstl.gov.cn/facade/search/uniformSearch.do?doc_uniform=J02,J03,J04,C02,Z01,C01,D01,D02,P01,P02,P03,P04,P05,P06,P07,P08,P09,P10,P11,P12,P13,P14,P15,P16,S01,S02,G02&amp;kw_uniform=背影" target="_blank" rel="noopener">国家科技图书文献中心</a>，进一步检索。</p>
+<h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>你可以点击上述链接，检索条件变成了乱码。为啥？因为该外链的后端对检索字进行了 GBK 编码，所以我们传过去的字符串也应该先进行相同字符集的编码。但是 JavaScript 本身没有特性支持 gbk 的 urlencode，该怎么解决？</p>
         
           <p class="article-more-link">
             <a href="/2018/08/21/urlencode/#more">Read More</a>
@@ -147,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/urlencode/" data-id="cjldg4tmo0004rebd4p6ms39e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/urlencode/" data-id="cjp20ved50003snbdxa1xl6yp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjldg4tmp0005rebdatgyo0cx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjp20veda0008snbdbkytbsx7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/multi-col-layout/" data-id="cjldg4tmn0003rebd0srcrbpn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/multi-col-layout/" data-id="cjp20vecy0000snbd5xix2pmp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -283,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/center-layout/" data-id="cjldg4tmj0001rebdwm2eorla" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/center-layout/" data-id="cjp20ved20001snbd1uo5pn8p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +406,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li></ul>
     </div>
   </div>
 
@@ -318,7 +421,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
     </div>
   </div>
 
@@ -331,7 +434,15 @@
       <ul>
         
           <li>
-            <a href="/2018/08/28/a-href/">a链接覆盖 window.location.href</a>
+            <a href="/2018/11/27/vue-eventListener/">Vue-事件监听器的绑定与移除</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/27/vue-proxy/">Vue-利用proxy跨域</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/27/vue-nextTick/">Vue-$nextTick应用</a>
           </li>
         
           <li>
@@ -340,14 +451,6 @@
         
           <li>
             <a href="/2018/08/21/webApp-css/">webApp-css篇</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/21/multi-col-layout/">多列布局</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/15/center-layout/">居中布局</a>
           </li>
         
       </ul>
