@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Date-in-Safari | Crisyhuang&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题描述：最近开发遇到个bug，页面上的倒计时按钮在 Chrome/Firefox/Android 下都能正常显示，在 Safari/IOS 被隐藏了。后经调试，发现是 new Date() 的问题。 解决思路： 首先，可在 Safari 浏览器中直接调试，比代理手机页面更方便。 Safari 启动开发者模式：菜单-偏好设置-高级-勾选‘在菜单栏中显示“开发”菜单’。   其次，若使用 Mac 的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Date-in-Safari">
+<meta property="og:url" content="http://yoursite.com/2018/12/10/Date-in-Safari/index.html">
+<meta property="og:site_name" content="Crisyhuang&#39;s Blog">
+<meta property="og:description" content="问题描述：最近开发遇到个bug，页面上的倒计时按钮在 Chrome/Firefox/Android 下都能正常显示，在 Safari/IOS 被隐藏了。后经调试，发现是 new Date() 的问题。 解决思路： 首先，可在 Safari 浏览器中直接调试，比代理手机页面更方便。 Safari 启动开发者模式：菜单-偏好设置-高级-勾选‘在菜单栏中显示“开发”菜单’。   其次，若使用 Mac 的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-10T08:23:57.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Date-in-Safari">
+<meta name="twitter:description" content="问题描述：最近开发遇到个bug，页面上的倒计时按钮在 Chrome/Firefox/Android 下都能正常显示，在 Safari/IOS 被隐藏了。后经调试，发现是 new Date() 的问题。 解决思路： 首先，可在 Safari 浏览器中直接调试，比代理手机页面更方便。 Safari 启动开发者模式：菜单-偏好设置-高级-勾选‘在菜单栏中显示“开发”菜单’。   其次，若使用 Mac 的">
+  
+    <link rel="alternate" href="/atom.xml" title="Crisyhuang&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Crisyhuang&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Date-in-Safari" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/10/Date-in-Safari/" class="article-date">
+  <time datetime="2018-12-10T07:38:23.000Z" itemprop="datePublished">2018-12-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Date-in-Safari
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>最近开发遇到个bug，页面上的倒计时按钮在 Chrome/Firefox/Android 下都能正常显示，在 Safari/IOS 被隐藏了。后经调试，发现是 new Date() 的问题。</p>
+<h4 id="解决思路："><a href="#解决思路：" class="headerlink" title="解决思路："></a>解决思路：</h4><ul>
+<li>首先，可在 Safari 浏览器中直接调试，比代理手机页面更方便。<ul>
+<li>Safari 启动开发者模式：菜单-偏好设置-高级-勾选‘在菜单栏中显示“开发”菜单’。</li>
+</ul>
+</li>
+<li>其次，若使用 Mac 的 Charles 代理 js，记得在修改 js 后要清缓存，不然会有代理不成功的错觉。<ul>
+<li>Safari 清空缓存：菜单-开发-清空缓存 or 菜单-历史记录-清楚历史记录</li>
+</ul>
+</li>
+<li>Date 对象及其在不同浏览器中的实现有很多奇怪的行为。<ul>
+<li>一般情况，使用 new Date(‘2018-12-12 00:00:00’); 可以将字符串格式化成日期对象；</li>
+<li>但 Safari 不支持这种格式，以上语句会返回 Invalid Date;</li>
+<li>因此，需要在格式化日期之前，先将字符串转化为 Safari 支持的格式： yyyy/MM/dd HH:mm:ss 或者 yyyy-MM-ddTHH:mm:ss；</li>
+<li>引申：IE8 不支持 - 分割的日期；</li>
+<li>综上所述，兼容方案是：new Date(‘2018-12-12 00:00:00’.replace(/-/g, ‘/‘));</li>
+</ul>
+</li>
+</ul>
+<h4 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// new Date() in Safari/IOS</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>); <span class="comment">// Invalid Date</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>).getTime(); <span class="comment">// NAN</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>.replace(<span class="regexp">/-/g</span>, <span class="string">'/'</span>)); <span class="comment">// Wed Dec 12 2018 00:00:00 GMT+0800 (CST)</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/10/Date-in-Safari/" data-id="cjpi1yx1500006kbdprxnxes6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/27/vue-eventListener/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue-事件监听器的绑定与移除</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/10/Date-in-Safari/">Date-in-Safari</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/27/vue-eventListener/">Vue-事件监听器的绑定与移除</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/27/vue-proxy/">Vue-开发环境的跨域问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/27/vue-nextTick/">Vue-$nextTick应用</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/21/urlencode/">实现各种编码的urlencode</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Crisyhuang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -65,6 +65,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Date-in-Safari" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/10/Date-in-Safari/" class="article-date">
+  <time datetime="2018-12-10T07:38:23.000Z" itemprop="datePublished">2018-12-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JS/">JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/10/Date-in-Safari/">Date-in-Safari</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>最近开发遇到个bug，页面上的倒计时按钮在 Chrome/Firefox/Android 下都能正常显示，在 Safari/IOS 被隐藏了。后经调试，发现是 new Date() 的问题。</p>
+<h4 id="解决思路："><a href="#解决思路：" class="headerlink" title="解决思路："></a>解决思路：</h4><ul>
+<li>首先，可在 Safari 浏览器中直接调试，比代理手机页面更方便。<ul>
+<li>Safari 启动开发者模式：菜单-偏好设置-高级-勾选‘在菜单栏中显示“开发”菜单’。</li>
+</ul>
+</li>
+<li>其次，若使用 Mac 的 Charles 代理 js，记得在修改 js 后要清缓存，不然会有代理不成功的错觉。<ul>
+<li>Safari 清空缓存：菜单-开发-清空缓存 or 菜单-历史记录-清楚历史记录</li>
+</ul>
+</li>
+<li>Date 对象及其在不同浏览器中的实现有很多奇怪的行为。<ul>
+<li>一般情况，使用 new Date(‘2018-12-12 00:00:00’); 可以将字符串格式化成日期对象；</li>
+<li>但 Safari 不支持这种格式，以上语句会返回 Invalid Date;</li>
+<li>因此，需要在格式化日期之前，先将字符串转化为 Safari 支持的格式： yyyy/MM/dd HH:mm:ss 或者 yyyy-MM-ddTHH:mm:ss；</li>
+<li>引申：IE8 不支持 - 分割的日期；</li>
+<li>综上所述，兼容方案是：new Date(‘2018-12-12 00:00:00’.replace(/-/g, ‘/‘));</li>
+</ul>
+</li>
+</ul>
+<h4 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// new Date() in Safari/IOS</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>); <span class="comment">// Invalid Date</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>).getTime(); <span class="comment">// NAN</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>.replace(<span class="regexp">/-/g</span>, <span class="string">'/'</span>)); <span class="comment">// Wed Dec 12 2018 00:00:00 GMT+0800 (CST)</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/10/Date-in-Safari/" data-id="cjpi1yx1500006kbdprxnxes6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue-eventListener" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/27/vue-eventListener/" class="article-date">
@@ -103,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/vue-eventListener/" data-id="cjp2id7bz0004j6bd6dqz9zf6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-eventListener/" data-id="cjpi1yx1m00096kbdumi0m0ap" class="article-share-link">Share</a>
       
       
     </footer>
@@ -155,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/vue-proxy/" data-id="cjp2id7c10007j6bdkry0k1bp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-proxy/" data-id="cjpi1yx1r000e6kbdjweo7pag" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/vue-nextTick/" data-id="cjp2id7bz0005j6bd6e9aj8zh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-nextTick/" data-id="cjpi1yx1o000c6kbdl8ixdhtz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/urlencode/" data-id="cjp2id7by0003j6bd4o035ztd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/urlencode/" data-id="cjpi1yx1n000a6kbdvpvuwy8d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -296,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjp2id7c20008j6bdeh40x1bj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjpi1yx1q000d6kbds6bqwt7z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -341,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/multi-col-layout/" data-id="cjp2id7bu0001j6bdg8svuo0d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/multi-col-layout/" data-id="cjpi1yx1d00036kbd2en0qetu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -386,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/center-layout/" data-id="cjp2id7bq0000j6bdkkk8kko6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/center-layout/" data-id="cjpi1yx1a00016kbd9hlxquk1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -421,7 +480,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
     </div>
   </div>
 
@@ -432,6 +491,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/10/Date-in-Safari/">Date-in-Safari</a>
+          </li>
         
           <li>
             <a href="/2018/11/27/vue-eventListener/">Vue-事件监听器的绑定与移除</a>
@@ -447,10 +510,6 @@
         
           <li>
             <a href="/2018/08/21/urlencode/">实现各种编码的urlencode</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/21/webApp-css/">webApp-css篇</a>
           </li>
         
       </ul>
