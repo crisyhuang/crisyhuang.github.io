@@ -92,29 +92,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h4><p>最近开发遇到个bug，页面上的倒计时按钮在 Chrome/Firefox/Android 下都能正常显示，在 Safari/IOS 被隐藏了。经调试，发现是 new Date() 的问题。</p>
-<h4 id="解决思路："><a href="#解决思路：" class="headerlink" title="解决思路："></a>解决思路：</h4><ul>
-<li>首先，可在 Safari 浏览器中直接调试，比代理手机页面更方便。<ul>
-<li>Safari 启动开发者模式：菜单-偏好设置-高级-勾选‘在菜单栏中显示“开发”菜单’。</li>
-</ul>
-</li>
-<li>其次，若使用 Mac 的 Charles 代理 js，记得在修改 js 后要清缓存，不然会有代理不成功的错觉。<ul>
-<li>Safari 清空缓存：菜单-开发-清空缓存 or 菜单-历史记录-清楚历史记录</li>
-</ul>
-</li>
-<li>Date 对象及其在不同浏览器中的实现有很多奇怪的行为。<ul>
-<li>一般情况，使用 new Date(‘2018-12-12 00:00:00’); 可以将字符串格式化成日期对象；</li>
-<li>但 Safari 不支持这种格式，以上语句会返回 Invalid Date;</li>
-<li>因此，需要在格式化日期之前，先将字符串转化为 Safari 支持的格式： yyyy/MM/dd HH:mm:ss 或者 yyyy-MM-ddTHH:mm:ss；</li>
-<li>引申：IE8 不支持 - 分割的日期；</li>
-<li>综上所述，兼容方案是：new Date(‘2018-12-12 00:00:00’.replace(/-/g, ‘/‘));</li>
-</ul>
-</li>
-</ul>
-<h4 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// new Date() in Safari/IOS</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>); <span class="comment">// Invalid Date</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>).getTime(); <span class="comment">// NAN</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2018-12-12 00:00:00'</span>.replace(<span class="regexp">/-/g</span>, <span class="string">'/'</span>)); <span class="comment">// Wed Dec 12 2018 00:00:00 GMT+0800 (CST)</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/10/Date-in-Safari/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/10/Date-in-Safari/" data-id="cjpi24dj200007sbdbufcc60t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/10/Date-in-Safari/" data-id="cjpi25xo600008kbdizaovd2a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/vue-eventListener/" data-id="cjpi24dje00057sbdw5kq82bd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-eventListener/" data-id="cjpi25xoj00088kbdhuz5lusd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,15 +192,15 @@
 <li>changeOrigin若设为 true, 则本地会虚拟一个服务端，接收你的请求并转发出去，所以不会有跨域问题。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    port: <span class="number">8080</span>,</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="string">'/api'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://shop.tianya.cn'</span>,</span><br><span class="line">            ws: <span class="literal">true</span>,</span><br><span class="line">            changeOrigin: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="跨域外链：express-http-proxy-middleware"><a href="#跨域外链：express-http-proxy-middleware" class="headerlink" title="跨域外链：express + http-proxy-middleware"></a>跨域外链：express + http-proxy-middleware</h4><ul>
-<li>文档参考：<a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="noopener">http-proxy-middleware</a><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> proxy = <span class="built_in">require</span>(<span class="string">'http-proxy-middleware'</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(<span class="string">'/api'</span>, proxy(&#123;<span class="attr">target</span>: <span class="string">'http://shop.tianya.cn'</span>, <span class="attr">changeOrigin</span>: <span class="literal">true</span>&#125;))</span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">devServer: &#123;</span><br><span class="line">    port: <span class="number">8080</span>,</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="string">'/api'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://localhost:3000'</span>,</span><br><span class="line">            ws: <span class="literal">true</span>,</span><br><span class="line">            changeOrigin: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  http://localhost:3000/api/-&gt; http://shop.tianya.cn/api/</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="访问本地数据：express-proxy"><a href="#访问本地数据：express-proxy" class="headerlink" title="访问本地数据：express + proxy"></a>访问本地数据：express + proxy</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line">app.use(<span class="string">'/mock'</span>, express.static(<span class="string">'./mock'</span>))</span><br><span class="line">app.listen(<span class="number">3000</span>)</span><br><span class="line"></span><br><span class="line">devServer: &#123;</span><br><span class="line">    port: <span class="number">8080</span>,</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">        <span class="string">'/mock'</span>: &#123;</span><br><span class="line">            target: <span class="string">'http://localhost:3000'</span>,</span><br><span class="line">            ws: <span class="literal">true</span>,</span><br><span class="line">            changeOrigin: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2018/11/27/vue-proxy/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/vue-proxy/" data-id="cjpi24djg00087sbdlfdi6q9b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-proxy/" data-id="cjpi25xog00058kbdn66hoqxj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/27/vue-nextTick/" data-id="cjpi24djf00077sbd42p17dqj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/27/vue-nextTick/" data-id="cjpi25xoi00078kbdkywtcuxq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -309,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/urlencode/" data-id="cjpi24djb00037sbdhiicz3cs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/urlencode/" data-id="cjpi25xof00048kbdmujod8zw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -355,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjpi24dji000b7sbdd1evxvzj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/webApp-css/" data-id="cjpi25xol000b8kbdaifpvvp4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/21/multi-col-layout/" data-id="cjpi24djc00047sbdhlnpmfu9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/21/multi-col-layout/" data-id="cjpi25xoe00038kbdhjfyn0qu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -445,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/15/center-layout/" data-id="cjpi24dj700017sbd1ujjysaw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/15/center-layout/" data-id="cjpi25xob00018kbdlmcjxuk7" class="article-share-link">Share</a>
       
       
     </footer>
